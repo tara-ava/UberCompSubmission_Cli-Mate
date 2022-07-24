@@ -1,0 +1,424 @@
+-- MySQL dump 10.13  Distrib 5.7.34, for Linux (x86_64)
+--
+-- Host: 172.17.0.3    Database: cli_mate
+-- ------------------------------------------------------
+-- Server version	5.5.5-10.6.1-MariaDB-1:10.6.1+maria~focal
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `alembic_version`
+--
+
+DROP TABLE IF EXISTS `alembic_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `alembic_version` (
+  `version_num` varchar(32) NOT NULL,
+  PRIMARY KEY (`version_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `alembic_version`
+--
+
+LOCK TABLES `alembic_version` WRITE;
+/*!40000 ALTER TABLE `alembic_version` DISABLE KEYS */;
+INSERT INTO `alembic_version` VALUES ('3ac4bfc54cd8');
+/*!40000 ALTER TABLE `alembic_version` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pbook`
+--
+
+DROP TABLE IF EXISTS `pbook`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pbook` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `user` int(11) DEFAULT NULL,
+  `pickup` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pbook`
+--
+
+LOCK TABLES `pbook` WRITE;
+/*!40000 ALTER TABLE `pbook` DISABLE KEYS */;
+INSERT INTO `pbook` VALUES (1,'2022-07-24 12:35:37',NULL,1,1),(2,'2022-07-24 17:08:18','2022-07-24 17:08:18',1,1),(3,'2022-07-24 17:13:55','2022-07-24 17:13:55',1,2),(4,'2022-07-24 17:14:31','2022-07-24 17:14:31',1,2),(5,'2022-07-24 17:16:16','2022-07-24 17:16:16',1,1),(6,'2022-07-24 17:25:06','2022-07-24 17:25:06',1,1),(7,'2022-07-24 23:19:48','2022-07-24 23:19:48',1,1),(8,'2022-07-24 23:27:45','2022-07-24 23:27:45',1,1);
+/*!40000 ALTER TABLE `pbook` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pickup_book`
+--
+
+DROP TABLE IF EXISTS `pickup_book`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pickup_book` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='booked pickup';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pickup_book`
+--
+
+LOCK TABLES `pickup_book` WRITE;
+/*!40000 ALTER TABLE `pickup_book` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pickup_book` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pickup_schedule`
+--
+
+DROP TABLE IF EXISTS `pickup_schedule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pickup_schedule` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `area` varchar(50) NOT NULL,
+  `capacity` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='predetermined pickups schedule';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pickup_schedule`
+--
+
+LOCK TABLES `pickup_schedule` WRITE;
+/*!40000 ALTER TABLE `pickup_schedule` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pickup_schedule` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pschedule`
+--
+
+DROP TABLE IF EXISTS `pschedule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pschedule` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `area` varchar(50) DEFAULT NULL,
+  `capacity` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pschedule`
+--
+
+LOCK TABLES `pschedule` WRITE;
+/*!40000 ALTER TABLE `pschedule` DISABLE KEYS */;
+INSERT INTO `pschedule` VALUES (1,'2022-07-24 04:58:45','2022-07-24 04:58:45','2022-08-23 10:00:23','Menteng',10),(2,'2022-07-24 22:19:27',NULL,'2022-08-30 10:00:31','Kelapa Gading',10),(3,'2022-07-24 22:20:38',NULL,'2022-08-30 10:00:31','Kemayoran',10),(4,'2022-07-24 22:21:17',NULL,'2022-08-30 10:00:31','Kebayoran Baru',10),(5,'2022-07-24 22:22:48',NULL,'2022-08-30 10:00:31','Jelambar',10);
+/*!40000 ALTER TABLE `pschedule` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `redeem`
+--
+
+DROP TABLE IF EXISTS `redeem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `redeem` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `user` int(11) DEFAULT NULL,
+  `reward` int(11) DEFAULT NULL,
+  `used` varchar(5) DEFAULT NULL,
+  `expiry` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `redeem`
+--
+
+LOCK TABLES `redeem` WRITE;
+/*!40000 ALTER TABLE `redeem` DISABLE KEYS */;
+INSERT INTO `redeem` VALUES (1,'2022-07-24 17:43:08','2022-07-24 17:43:08',1,1,'N','2022-07-24 10:43:08'),(2,'2022-07-24 17:44:40','2022-07-24 17:44:40',1,2,'N','2022-07-24 10:44:40');
+/*!40000 ALTER TABLE `redeem` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reward`
+--
+
+DROP TABLE IF EXISTS `reward`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reward` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `points` int(11) DEFAULT NULL,
+  `active` varchar(5) DEFAULT NULL,
+  `partner` int(11) DEFAULT NULL,
+  `since` datetime DEFAULT NULL,
+  `desc` varchar(120) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reward`
+--
+
+LOCK TABLES `reward` WRITE;
+/*!40000 ALTER TABLE `reward` DISABLE KEYS */;
+INSERT INTO `reward` VALUES (1,'2022-07-24 12:04:50',NULL,10,'Y',1,'2022-07-24 12:05:37','Get 15% off of the new Banana Oat Moca from Janji Jiwa!'),(2,'2022-07-24 22:09:06',NULL,75,'Y',2,'2022-07-24 22:10:19','Treat a Friend! Starbucks exclusive deal with Cli-Mate!'),(3,'2022-07-24 22:10:44',NULL,25,'Y',3,'2022-07-24 22:10:54','Enjoy 25% discounts on Cinema XXI tickets this weekend!');
+/*!40000 ALTER TABLE `reward` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `full_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `hashed_password` varchar(255) DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT NULL,
+  `role` varchar(100) DEFAULT 'guests',
+  `last_login` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ix_user_email` (`email`),
+  KEY `ix_user_full_name` (`full_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'2022-07-23 15:59:42','2022-07-24 04:56:59','Ivan Sorano','isorano@gmail.com','$2b$12$0NVBfTvaQo4Tn.I82xFC3OakW2MFpZRYT1KdSLiwrIEs3pwUU3Bv2',1,'administrators','2022-07-24 04:56:59'),(2,'2022-07-24 01:20:07','2022-07-24 01:20:07','Mimin Admin','user@example.com','$2b$12$zDPF5GWJ88eMYOxtzRqUMO57U77PYcGhwcmxbUGLblI5bZWELkqa2',1,'administrators',NULL),(3,'2022-07-24 05:17:06','2022-07-24 05:17:06','Tara Ava','tara@gmail.com','$2b$12$rD5dwf9LbmQL6.pJPOIZwu1.ohCmXd33qQvY5B0jki1BJNwbVXzhy',1,'users',NULL);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_hh`
+--
+
+DROP TABLE IF EXISTS `user_hh`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_hh` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `dob` date NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `mobile` varchar(20) NOT NULL,
+  `points` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='household user';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_hh`
+--
+
+LOCK TABLES `user_hh` WRITE;
+/*!40000 ALTER TABLE `user_hh` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_hh` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_partner`
+--
+
+DROP TABLE IF EXISTS `user_partner`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_partner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `company` varchar(60) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `mobile` varchar(20) NOT NULL,
+  `tax_num` varchar(20) DEFAULT NULL,
+  `bank_acc` varchar(20) DEFAULT NULL,
+  `type` enum('RC','RW') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='partner users';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_partner`
+--
+
+LOCK TABLES `user_partner` WRITE;
+/*!40000 ALTER TABLE `user_partner` DISABLE KEYS */;
+INSERT INTO `user_partner` VALUES (1,'Kopi Janji Jiwa','janjijiwa@gmail.com','Mal Plaza Indonesia Lt. LB','08111285355','08111285355',NULL,NULL,'RW');
+/*!40000 ALTER TABLE `user_partner` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `userhh`
+--
+
+DROP TABLE IF EXISTS `userhh`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `userhh` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `name` varchar(60) DEFAULT NULL,
+  `email` varchar(60) DEFAULT NULL,
+  `dob` datetime DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `mobile` varchar(20) DEFAULT NULL,
+  `points` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `userhh`
+--
+
+LOCK TABLES `userhh` WRITE;
+/*!40000 ALTER TABLE `userhh` DISABLE KEYS */;
+INSERT INTO `userhh` VALUES (1,'2022-07-24 05:18:59','2022-07-24 05:18:59','Tara Ava','tara@gmail.com','2004-11-06 00:00:00','kemayoran','087719191919',100),(2,'2022-07-24 05:20:11','2022-07-24 05:20:11','Ivan Sorano','isorano@gmail.com','1970-02-16 00:00:00','kemayoran','0811874135',100);
+/*!40000 ALTER TABLE `userhh` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `userprt`
+--
+
+DROP TABLE IF EXISTS `userprt`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `userprt` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `company` varchar(60) DEFAULT NULL,
+  `email` varchar(60) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `mobile` varchar(20) DEFAULT NULL,
+  `tax_num` varchar(20) DEFAULT NULL,
+  `bank_acc` varchar(20) DEFAULT NULL,
+  `ptype` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `userprt`
+--
+
+LOCK TABLES `userprt` WRITE;
+/*!40000 ALTER TABLE `userprt` DISABLE KEYS */;
+INSERT INTO `userprt` VALUES (1,NULL,NULL,'PT Ojolali Makmur','admin@ojolalimakmur.com','Jl. Ojolali Makmur Jaya No.456','02149986','0819345849','0000000000','1234567890','RC');
+/*!40000 ALTER TABLE `userprt` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `waste`
+--
+
+DROP TABLE IF EXISTS `waste`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `waste` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `wtype` varchar(20) DEFAULT NULL,
+  `weight` int(11) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `available` varchar(5) DEFAULT NULL,
+  `user` int(11) DEFAULT NULL,
+  `buyer` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `waste`
+--
+
+LOCK TABLES `waste` WRITE;
+/*!40000 ALTER TABLE `waste` DISABLE KEYS */;
+INSERT INTO `waste` VALUES (1,NULL,NULL,'Plastic',20,'2022-07-24 18:03:28','Y',1,0),(2,NULL,NULL,'Paper',13,'2022-07-24 18:06:37','Y',1,0),(3,NULL,NULL,'Glass',5,'2022-07-24 18:07:19','Y',1,0),(4,NULL,NULL,'Metal1',5,'2022-07-24 22:13:22','Y',2,0),(5,NULL,NULL,'Plastic',18,'2022-07-24 22:15:14','Y',2,0),(6,NULL,NULL,'Metal2',7,'2022-07-24 22:15:15','Y',1,0),(7,NULL,NULL,'Paper',23,'2022-07-24 22:17:16','Y',2,0),(8,NULL,NULL,'Metal3',6,'2022-07-24 22:17:52','Y',2,0),(9,NULL,NULL,'Plastic',25,'2022-07-24 22:18:29','Y',1,0),(10,NULL,NULL,'Glass',10,'2022-07-24 22:19:00','Y',1,0);
+/*!40000 ALTER TABLE `waste` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `waste_map`
+--
+
+DROP TABLE IF EXISTS `waste_map`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `waste_map` (
+  `type` enum('Plastic','Paper','Glass','Metal1','Metal2','Metal3') NOT NULL,
+  `multiply` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `waste_map`
+--
+
+LOCK TABLES `waste_map` WRITE;
+/*!40000 ALTER TABLE `waste_map` DISABLE KEYS */;
+/*!40000 ALTER TABLE `waste_map` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-07-25  4:10:42

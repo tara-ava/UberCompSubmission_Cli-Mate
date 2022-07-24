@@ -1,0 +1,44 @@
+<template>
+    <div>
+        <b-navbar type="dark" variant="primary">
+            <b-navbar-brand>IoTmom</b-navbar-brand>
+            <b-navbar-nav class="ml-auto">
+                <b-nav-item to="about">About</b-nav-item>
+                <b-nav-item-dropdown right>
+                    <template #button-content>
+                    <b-avatar size="sm"></b-avatar>
+                    </template>
+                    <div>
+                        <b-dropdown-item>Logout</b-dropdown-item>
+                        <b-dropdown-item>Profile</b-dropdown-item>
+                    </div>
+                    <div>
+                        <b-dropdown-item>Login</b-dropdown-item>
+                        <b-dropdown-item href="#">Register</b-dropdown-item>
+                    </div>
+                </b-nav-item-dropdown>
+            </b-navbar-nav>
+        </b-navbar>
+
+        <b-container fluid>
+            <b-row>
+                <b-col>
+                    <b-nav vertical>
+                        <b-nav-item to="/" active>Main</b-nav-item>
+                        <b-nav-item to="/gateways">Gateways</b-nav-item>
+                        <b-nav-item to="/sensors">Sensors</b-nav-item>
+                        <b-nav-item to="/dashboards">Dashboards</b-nav-item>
+                    </b-nav>
+                </b-col>
+                <b-col cols="10" >
+                    <Nuxt />
+                </b-col>
+            </b-row>
+        </b-container>
+    </div>
+</template>
+
+<script>
+export default {
+}
+</script>
